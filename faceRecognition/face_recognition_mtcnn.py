@@ -25,7 +25,7 @@ def load_known_faces(folder):
 # Recognize face using DeepFace
 def recognize_face(face_img, known_faces, known_names):
     try:
-        result = DeepFace.find(img_path=face_img, db_path='faceRecognition/known_faces', enforce_detection=False, model_name='Facenet')
+        result = DeepFace.find(img_path=face_img, db_path='known_faces', enforce_detection=False, model_name='Facenet')
         if len(result[0]) > 0:
             return os.path.splitext(os.path.basename(result[0].iloc[0]['identity']))[0]
         else:
@@ -60,8 +60,8 @@ def process_image(image_path):
     cv2.destroyAllWindows()
 
 # Run
-known_faces, known_names = load_known_faces('faceRecognition/known_faces')
-process_image('faceRecognition/group_pics/grp11.jpg')
+known_faces, known_names = load_known_faces('known_faces')
+process_image('group_pics/grp11.jpg')
 
 
 # Documentation
